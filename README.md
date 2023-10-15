@@ -1,4 +1,4 @@
-#Wordpressのdockerテンプレート
+# Wordpressのdockerテンプレート
 起動（デーモンで起動。-d）
 docker compose up
 停止
