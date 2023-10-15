@@ -5,10 +5,10 @@ services:
     container_name: mysql8
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: password # rootユーザのパスワード
-      MYSQL_DATABASE: db_local # WordPress用データベース名
-      MYSQL_USER: wp_user # WordPress用データベース接続ユーザ名
-      MYSQL_PASSWORD: password # WordPress用データベース接続パスワード
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: db_local 
+      MYSQL_USER: wp_user 
+      MYSQL_PASSWORD: password 
   wp:
     image: wordpress:latest
     container_name: wordpress
@@ -16,13 +16,13 @@ services:
     depends_on:
       - wp-db
     ports:
-      - 10090:80
+      - 10000:80
     environment:
-      WORDPRESS_DB_HOST: wp-db:3306 # データベースサーバ名：ポート番号
-      WORDPRESS_DB_USER: wp_user # WordPress用データベース接続ユーザ名(dbの内容に合わせる)
-      WORDPRESS_DB_PASSWORD: password # WordPress用データベース接続パスワード(dbの内容に合わせる)
-      WORDPRESS_DB_NAME: db_local # WordPress用データベース名(dbの内容に合わせる)
-      WORDPRESS_DEBUG: 1 # デバッグモードON
+      WORDPRESS_DB_HOST: wp-db:3306 
+      WORDPRESS_DB_USER: wp_user 
+      WORDPRESS_DB_PASSWORD: password 
+      WORDPRESS_DB_NAME: db_local 
+      WORDPRESS_DEBUG: 1 
     volumes:
       - ./html:/var/www/html
   phpmyadmin:
@@ -32,4 +32,4 @@ services:
     depends_on:
       - wp-db
     ports:
-      - 10099:80
+      - 10009:80
